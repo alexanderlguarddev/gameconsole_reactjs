@@ -1,6 +1,7 @@
 import { createTheme, styled  } from '@mui/material/styles'
 
 import FontLenktonRegular from './assets/fonts/lekton/Lekton-Regular.ttf'
+import AudiowideRegular from './assets/fonts/audiowide/Audiowide-Regular.ttf'
 
 const theme = createTheme({
     palette: {
@@ -16,6 +17,11 @@ const theme = createTheme({
             fontSize: 18,
             fontWeight: 400,
             fontFamily: "'Lekton', sans-serif",
+        },
+        body1: {
+            color: 'white',
+            fontWeight: 400,
+            fontFamily: "'Lekton', sans-serif",
         }
     },
     components: {
@@ -28,7 +34,32 @@ const theme = createTheme({
                     src: local('Lekton'), local('Lekton-Regular'), url(${FontLenktonRegular}), format('ttf');
                     unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
                 }
+
+                @font-face {
+                    font-family: 'Audiowide';
+                    font-display: swap;
+                    font-weight: 400;
+                    src: local('Audiowide'), local('Audiowide-Regular'), url(${AudiowideRegular}), format('ttf');
+                    unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+                }
             `
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    color: 'black',
+                    fontFamily: "'Audiowide', sans-serif",
+                    background:'#50B4F2',
+                    paddingLeft: '35px',
+                    paddingRight: '35px',
+                    '&:hover': {
+                        background: '#2678BF'
+                    },
+                    '&:active': {
+                        color: 'white'
+                    }
+                }
+            }
         },
         MuiListSubheader: {
             styleOverrides: {

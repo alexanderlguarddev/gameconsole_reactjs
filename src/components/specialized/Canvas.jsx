@@ -1,9 +1,12 @@
 import { styled } from '@mui/system'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useResizeDetector } from 'react-resize-detector';
 
 import Container from '@mui/material/Container'
-import Box from '@mui/material/Box'
+
+import useCanvasSetting from '../../hooks/useCanvasSetting';
+
+import { roundValue } from '../../tools';
 
 const CanvaContainer = styled(Container)({
     background: 'rgba(255, 255, 255, .05)',
@@ -14,14 +17,18 @@ const CanvaContainer = styled(Container)({
 })
 
 const Canvas = () => {
-    const canvasRef = useRef(null)
-    const { width, height, ref: CanvasContainerRef } = useResizeDetector();
+  const canvasRef = useRef(null)
+  const { width: canvasWidth, height: canvasHeight, ref: CanvasContainerRef } = useResizeDetector()
+
+  const { updateCanvasSize } = useCanvasSetting()
+
+  useEffect(() => {
+    updateCanvasSize(roundValue(canvasWidth, 2), roundValue(canvasHeight, 2))
+  }, [canvasWidth, canvasHeight])
 
   return (
     <CanvaContainer ref={CanvasContainerRef} sx={{ border: 1, borderColor: 'secondary.main', borderRadius: 1 }}>
       <canvas ref={canvasRef} />
-      <p>width: {width}</p>
-      <p>height: {height}</p>
     </CanvaContainer>
   )
 }

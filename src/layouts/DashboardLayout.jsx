@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 
 import Header from '../components/Header';
+import SpriteSheetModal from '../modals/SpriteSheetModal';
 
 const CustomBox = styled(Box)({
   width: '100vw',
@@ -17,12 +18,16 @@ const CustomBox = styled(Box)({
 
 const DashboardLayout = () => {
   return (
-    <Container maxWidth="sm" variant="no-space">
-      <CustomBox>
-        <Header />
-        <Outlet />
-      </CustomBox>
-    </Container>
+    <>
+      <Container maxWidth="sm" variant="no-space">
+        <CustomBox>
+          <Header />
+          <Outlet />
+        </CustomBox>
+      </Container>
+
+      <SpriteSheetModal />
+    </>
   )
 }
 

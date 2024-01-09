@@ -26,7 +26,7 @@ const CustomBox = styled(Box)({
     }
 });
 
-const LeftMenuItem = ({ title }) => {
+const LeftMenuItem = ({ title, body }) => {
     const [open, setOpen] = useState(true)
 
     const handleClick = () => setOpen(!open)
@@ -40,8 +40,8 @@ const LeftMenuItem = ({ title }) => {
                 </CustomBox>
             </ListItemButton>
 
-            <Collapse in={open} sx={{ padding: '8px' }} timeout="auto" unmountOnExit>
-                Hello
+            <Collapse in={open} sx={{ padding: '18px 16px 8px' }} timeout="auto" unmountOnExit>
+                {body}
             </Collapse>
         </>
     )

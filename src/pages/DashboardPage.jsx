@@ -1,16 +1,51 @@
-import Header from "../components/Header"
-
 import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 
-import LeftMenu from "../components/specialized/LeftMenu";
-import Canvas from "../components/specialized/Canvas";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+
+import Header from "../components/Header"
+import LeftMenu from "../components/specialized/LeftMenu"
+import Canvas from "../components/specialized/Canvas"
+
+import { styled } from '@mui/material/styles'
+
+import useModal from '../hooks/useModal'
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
 
 const DashboardPage = () => {
+
+  const { openModal } = useModal()
+
+  const fileBrowseHandler = (e) => {
+    let imgURL = URL.createObjectURL(e.target.files[0]);
+    
+    
+
+    openModal('Sprite_Sheet')
+  }
+
   return (
     <>
       <Grid container spacing={2} sx={{ height: '100%' }}>
-        <Grid item xs={9} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid item xs={9} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+          <Stack spacing={2} direction="row" sx={{ width: '80%', maxWidth: '1200px !important', justifyContent: 'right', paddingBottom: '16px' }}>
+            <Button component="label" variant="contained" size="large" startIcon={<CloudUploadIcon />}>Add Element <VisuallyHiddenInput onChange={fileBrowseHandler} required type="file" accept="image/png, image/gif, image/jpeg"  /></Button>
+          </Stack>
+
           <Canvas />
         </Grid>
 

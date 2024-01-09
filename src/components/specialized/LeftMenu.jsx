@@ -3,6 +3,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 
 import LeftMenuItem from './leftmenu/LeftMenuItem';
+import LeftMenuBodyCanvasSetting from './leftmenu/body/LeftMenuBodyCanvasSetting';
 
 const LeftMenu = () => {
   return (
@@ -15,7 +16,7 @@ const LeftMenu = () => {
                 </ListSubheader>
             }    
         >
-            <LeftMenuItem title="Canvas Setting" />
+            <LeftMenuItem title="Canvas Setting" body={ <LeftMenuBodyCanvasSetting /> } />
         </List>
     </Box>
   )
