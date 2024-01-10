@@ -1,6 +1,6 @@
 import { styled } from '@mui/system'
 import { useRef, useEffect } from 'react'
-import { useResizeDetector } from 'react-resize-detector';
+import { useResizeDetector } from 'react-resize-detector'
 
 import Container from '@mui/material/Container'
 

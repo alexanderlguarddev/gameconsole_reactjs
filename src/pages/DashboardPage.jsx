@@ -31,11 +31,16 @@ const DashboardPage = () => {
   const { openModal } = useModal()
 
   const fileBrowseHandler = (e) => {
-    let imgURL = URL.createObjectURL(e.target.files[0]);
-    
-    
+    let file = e.target.files[0]
 
-    openModal('Sprite_Sheet')
+    var fr = new FileReader()
+
+    fr.onload = function () {
+      localStorage.setItem("imgData", fr.result)
+      openModal('Sprite_Sheet')
+    }
+
+    fr.readAsDataURL(file)
   }
 
   return (
