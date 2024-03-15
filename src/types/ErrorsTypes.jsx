@@ -1,0 +1,1 @@
+export const ERROR_TYPE_FIELDS = "ERROR_TYPE_FIELDS"
